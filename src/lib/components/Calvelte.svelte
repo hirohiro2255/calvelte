@@ -1,6 +1,10 @@
-<script lang="ts">
+<script>
 	import './../css/sanitize.css';
 	export let result = 0;
+
+	function handleClick(event) {
+		console.log(event.target);
+	}
 </script>
 
 <section class="calvelte-container">
@@ -13,26 +17,33 @@
 	</section>
 	<div class="keypad-container">
 		<div class="keypad-wrapper">
+			<button class="keypad" on:click={handleClick} value="%">%</button>
+			<button class="keypad" on:click={handleClick}>(</button>
+			<button class="keypad" on:click={handleClick}>)</button>
+			<button class="keypad" on:click={handleClick}>AC</button>
+
 			<button class="keypad">7</button>
 			<button class="keypad">8</button>
 			<button class="keypad">9</button>
-			<button class="keypad delete all-clear"> C </button>
+			<button class="keypad">+</button>
+
 			<button class="keypad">4</button>
 			<button class="keypad">5</button>
 			<button class="keypad">6</button>
-			<button class="keypad">+</button>
+			<button class="keypad">-</button>
+
 			<button class="keypad">1</button>
 			<button class="keypad">2</button>
 			<button class="keypad">3</button>
-			<button class="keypad">-</button>
+			<button class="keypad">/</button>
+
 			<button class="keypad">.</button>
 			<button class="keypad">0</button>
-			<button class="keypad">/</button>
+			<button class="keypad">00</button>
 			<button class="keypad">*</button>
 
 			<!-- <button class="keypad reset" id="reset" value="reset">All Clear</button> -->
-			<button class="keypad">(</button>
-			<button class="keypad">)</button>
+			<button class="keypad delete all-clear">C</button>
 			<button class="keypad enter" id="enter" value="enter">=</button>
 		</div>
 	</div>
@@ -98,7 +109,7 @@
 
 	.keypad-wrapper {
 		display: grid;
-		grid-template-rows: repeat(5, 1fr);
+		grid-template-rows: repeat(6, 1fr);
 		grid-template-columns: repeat(4, 1fr);
 		gap: 13px;
 	}
@@ -130,6 +141,7 @@
 	}
 
 	.delete {
+		grid-column: 1/3;
 		font-size: clamp(1.25rem, 1.0739rem + 0.7512vw, 1.75rem);
 		font-weight: 700;
 		color: var(--sub-text);
