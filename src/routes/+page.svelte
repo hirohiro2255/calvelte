@@ -1,5 +1,6 @@
 <script>
 	import Calvelte from '$lib/index.js';
+	// import { Calvelte } from 'calvelte';
 </script>
 
-<Calvelte />
+<Calvelte result={100} />

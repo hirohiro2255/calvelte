@@ -1,2 +1,4 @@
 // Reexport your entry components here
-export { default as Calvelte } from '$lib/components/Calvelte.svelte';
+import Calvelte from '$lib/components/Calvelte.svelte';
+
+export default Calvelte;

@@ -1,6 +1,19 @@
 {
 	"name": "calvelte",
 	"version": "0.0.1",
+	"description": "Simple calculator library in Svelte",
+	"repository": {
+		"type": "git",
+		"url": "git:ssh://git@github.com/hirohiro2255/calvelte.git"
+	},
+	"author": {
+		"name": "Hiorkazu Hirono <hirono.hirokazu@gmail.com>"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/hirohiro2255/calvelte/issues",
+		"email": "hirono.hirokazu@gmail.com"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -51,5 +64,8 @@
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"calvelte": "^0.0.1"
+	}
 }
