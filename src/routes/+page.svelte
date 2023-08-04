@@ -3,4 +3,4 @@
 	// import { Calvelte } from 'calvelte';
 </script>
 
-<Calvelte result={100} />
+<Calvelte result={''} />

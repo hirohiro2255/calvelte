@@ -1,50 +1,80 @@
-<script>
+<script lang="ts">
 	import './../css/sanitize.css';
-	export let result = 0;
+	import Lexer from '../utils/lexer.js';
+	import { Parser, Calculator } from '../utils/calculator.js';
 
-	function handleClick(event) {
-		console.log(event.target);
+	const l = new Lexer(1);
+	console.log(l);
+
+	let lexer;
+	let parser;
+	let calculator;
+
+	export let result = '';
+
+	function handleClickOp(event: MouseEvent) {
+		result += event.target?.computedName;
 	}
+	function handleClickNumber(event: MouseEvent) {
+		result += event.target?.computedName;
+	}
+
+	function handleClear() {
+		result = result.length === 0 ? '0' : result.slice(0, result.length - 1);
+	}
+
+	function handleAllClear() {
+		result = '';
+	}
+
+	function handleEnter() {
+		lexer = new Lexer(result);
+		parser = new Parser(lexer);
+		calculator = new Calculator(parser);
+		result = calculator.cc();
+	}
+
+	$: computedStr = result.length === 0 ? '0' : result;
 </script>
 
 <section class="calvelte-container">
 	<section class="screen-container">
 		<div class="screen-wrapper">
 			<h2 class="result" id="result">
-				{result}
+				{computedStr}
 			</h2>
 		</div>
 	</section>
 	<div class="keypad-container">
 		<div class="keypad-wrapper">
-			<button class="keypad" on:click={handleClick} value="%">%</button>
-			<button class="keypad" on:click={handleClick}>(</button>
-			<button class="keypad" on:click={handleClick}>)</button>
-			<button class="keypad" on:click={handleClick}>AC</button>
+			<button class="keypad" on:click={handleClickOp}>%</button>
+			<button class="keypad" on:click={handleClickOp}>(</button>
+			<button class="keypad" on:click={handleClickOp}>)</button>
+			<button class="keypad" on:click={handleAllClear}>AC</button>
 
-			<button class="keypad">7</button>
-			<button class="keypad">8</button>
-			<button class="keypad">9</button>
-			<button class="keypad">+</button>
+			<button class="keypad" on:click={handleClickNumber}>7</button>
+			<button class="keypad" on:click={handleClickNumber}>8</button>
+			<button class="keypad" on:click={handleClickNumber}>9</button>
+			<button class="keypad" on:click={handleClickOp}>+</button>
 
-			<button class="keypad">4</button>
-			<button class="keypad">5</button>
-			<button class="keypad">6</button>
-			<button class="keypad">-</button>
+			<button class="keypad" on:click={handleClickNumber}>4</button>
+			<button class="keypad" on:click={handleClickNumber}>5</button>
+			<button class="keypad" on:click={handleClickNumber}>6</button>
+			<button class="keypad" on:click={handleClickOp}>-</button>
 
-			<button class="keypad">1</button>
-			<button class="keypad">2</button>
-			<button class="keypad">3</button>
-			<button class="keypad">/</button>
+			<button class="keypad" on:click={handleClickNumber}>1</button>
+			<button class="keypad" on:click={handleClickNumber}>2</button>
+			<button class="keypad" on:click={handleClickNumber}>3</button>
+			<button class="keypad" on:click={handleClickOp}>/</button>
 
 			<button class="keypad">.</button>
-			<button class="keypad">0</button>
-			<button class="keypad">00</button>
-			<button class="keypad">*</button>
+			<button class="keypad" on:click={handleClickNumber}>0</button>
+			<button class="keypad" on:click={handleClickNumber}>00</button>
+			<button class="keypad" on:click={handleClickOp}>*</button>
 
 			<!-- <button class="keypad reset" id="reset" value="reset">All Clear</button> -->
-			<button class="keypad delete all-clear">C</button>
-			<button class="keypad enter" id="enter" value="enter">=</button>
+			<button class="keypad delete all-clear" on:click={handleClear}>C</button>
+			<button class="keypad enter" id="enter" value="enter" on:click={handleEnter}>=</button>
 		</div>
 	</div>
 </section>
@@ -59,6 +89,7 @@
 	.calvelte-container {
 		width: 88%;
 		max-width: 540px;
+		min-width: 350px;
 		/* margin-right: auto;
 		margin-left: auto;
 		margin-top: 30px;
@@ -68,11 +99,11 @@
 	}
 
 	.screen-container {
-		margin-top: 32px;
+		/* margin-top: 32px; */
 		/* margin-bottom: 24px; */
-		padding-top: 6px;
-		padding-top: 29px;
-		padding-bottom: 22px;
+		/* padding-top: 6px; */
+		padding-top: 16px;
+		padding-bottom: 16px;
 		padding-right: 24px;
 		padding-left: 24px;
 		background-color: var(--screen-background);
@@ -89,13 +120,14 @@
 
 	.result {
 		text-align: right;
-		color: var(--main-text);
+		color: #191e3a;
 		font-size: clamp(2.5rem, 2.1479rem + 1.5023vw, 3.5rem);
 		font-weight: 700;
 		line-height: 0.92;
 		letter-spacing: -0.67px;
 		overflow: hidden;
 		white-space: nowrap;
+		padding-right: 0.3rem;
 	}
 
 	.keypad-container {
@@ -117,7 +149,7 @@
 	.keypad {
 		font-size: 2rem;
 		font-weight: 700;
-		color: var(--keypad-color);
+		color: #191e3a;
 		background-color: white;
 		line-height: 0.92;
 		border: none;
