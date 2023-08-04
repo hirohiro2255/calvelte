@@ -1,10 +1,7 @@
-<script lang="ts">
+<script>
 	import './../css/sanitize.css';
-	import Lexer from '../utils/lexer.js';
+	import Lexer from './../utils/lexer.js';
 	import { Parser, Calculator } from '../utils/calculator.js';
-
-	const l = new Lexer(1);
-	console.log(l);
 
 	let lexer;
 	let parser;
@@ -12,10 +9,10 @@
 
 	export let result = '';
 
-	function handleClickOp(event: MouseEvent) {
+	function handleClickOp(event) {
 		result += event.target?.computedName;
 	}
-	function handleClickNumber(event: MouseEvent) {
+	function handleClickNumber(event) {
 		result += event.target?.computedName;
 	}
 

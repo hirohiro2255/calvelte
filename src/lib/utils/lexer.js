@@ -1,15 +1,14 @@
-import Token from './token.js';
-import { checkType, isDigit, TokenType } from './helper.js';
+import Token from './token';
+import { checkType, isDigit, TokenType } from './helper';
 
 class Lexer {
-	private text: string;
-	private pos: number;
-	private currentChar: string | null = '';
-	constructor(text: string) {
+	constructor(text) {
 		this.text = text;
 		this.pos = 0;
+		if (checkType(this.text[this.pos]) !== '[object String]') {
+			throw new TypeError('Invalid type, string expected');
+		}
 		this.currentChar = this.text[this.pos];
-		checkType;
 	}
 
 	genError() {

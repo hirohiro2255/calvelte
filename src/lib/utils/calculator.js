@@ -1,4 +1,4 @@
-import { TokenType } from './helper.js';
+import { TokenType } from './helper';
 
 export class BinOp {
 	constructor(left, op, right) {
@@ -115,7 +115,6 @@ export class Calculator {
 		} else if (node.constructor.name === 'UnaryOp') {
 			return this.unaryNode(node);
 		} else {
-			console.log(node);
 			throw new Error('Parse Error');
 		}
 	}
