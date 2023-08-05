@@ -1,13 +1,14 @@
 {
 	"name": "calvelte",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Simple calculator library in Svelte",
 	"repository": {
 		"type": "git",
-		"url": "git:ssh://git@github.com/hirohiro2255/calvelte.git"
+		"url": "git+https://github.com/DataTables/DataTablesSrc.git"
 	},
 	"author": {
-		"name": "Hiorkazu Hirono <hirono.hirokazu@gmail.com>"
+		"name": "Hiorkazu Hirono <hirono.hirokazu@gmail.com>",
+		"url": "https://github.com/hirohiro2255"
 	},
 	"license": "MIT",
 	"bugs": {
@@ -66,6 +67,6 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"calvelte": "^0.0.1"
+		"calvelte": "^0.0.2"
 	}
 }
