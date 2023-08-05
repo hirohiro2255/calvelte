@@ -1,10 +1,10 @@
 {
 	"name": "calvelte",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Simple calculator library in Svelte",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/DataTables/DataTablesSrc.git"
+		"url": "git+https://github.com/hirohiro2255/calvelte.git"
 	},
 	"author": {
 		"name": "Hiorkazu Hirono <hirono.hirokazu@gmail.com>",
